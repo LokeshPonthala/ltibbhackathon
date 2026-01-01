@@ -1,0 +1,16 @@
+---
+version: "3"
+services:
+ devopsdb:
+   container_name: dbimage
+   image: nagalokesh/bloodbank:dbimage
+   ports:
+     - "3306:3306"
+
+ application:
+   image: nagalokesh/bloodbank:appimage
+   container_name: appimage
+   ports:
+     - "1234:8080"
+   depends_on:
+     - "dbimage"
